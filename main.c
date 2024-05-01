@@ -1,23 +1,23 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "pico/cyw43_arch.h"
+#include "tusb.h"
 #include "config.h"
-
-void toggleLED () {
-    cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, !cyw43_arch_gpio_get(CYW43_WL_GPIO_LED_PIN));
-}
+#include "common/inc/usb_descriptors.h"
 
 void buttonInterruptHandler (uint gpio, uint32_t events) {
     //RISING EDGE: bit 3 == 1 (8u)
     //FALLING EDGE: bit 2 == 1 (4u)
 
     (events & (1 << 3)) ? printf("%d RISING EDGE\n", gpio) : printf("%d FALLING EDGE\n", gpio);
-    // toggleLED(); //CRASHES THE PROGRAM
 }
+
+void hid_task(void);
 
 int main() {
     //INITIALIZATION
     stdio_init_all(); //initialize serial port (default 115200 bits/s)
+    tusb_init(); //initialize TinyUSB
 
     //GPIO init
     const uint leftButtonPin = BUTTON_INPUT_PIN1;
@@ -39,7 +39,10 @@ int main() {
 
     //wait forever
     while (1) {
-        printf("%d %d\n", gpio_get(leftButtonPin), gpio_get(rightButtonPin));
-        sleep_ms(1000);
+        tud_task(); // tinyusb device task
+        
+        //other tasks
+
+        hid_task();
     }
 }
