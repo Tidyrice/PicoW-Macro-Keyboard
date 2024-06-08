@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "usb_descriptors.h": "c"
+        "usb_descriptors.h": "c",
+        "config.h": "c",
+        "hid_app.c": "cpp",
+        "hid_app.h": "c"
     }
 }

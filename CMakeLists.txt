@@ -16,16 +16,23 @@ pico_sdk_init()
 # Tell CMake where to find the executable source file
 add_executable(${PROJECT_NAME} 
 	main.c
+	common/src/usb_descriptors.c
+	common/src/hid_app.c
 )
 
 # Create map/bin/hex/uf2 files
 pico_add_extra_outputs(${PROJECT_NAME})
 
 # Link
-target_link_libraries(${PROJECT_NAME} 
+target_link_libraries(${PROJECT_NAME} PUBLIC
 	pico_stdlib
 	pico_cyw43_arch_none
 	tinyusb_device
+	tinyusb_board
+)
+
+target_include_directories(${PROJECT_NAME} PUBLIC
+    ${CMAKE_CURRENT_LIST_DIR}
 )
 
 # Enable usb output, disable uart output

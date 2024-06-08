@@ -2,6 +2,7 @@
 #include "pico/stdlib.h"
 #include "pico/cyw43_arch.h"
 #include "tusb.h"
+#include "bsp/board.h"
 #include "config.h"
 #include "common/inc/usb_descriptors.h"
 
@@ -28,12 +29,11 @@ void button_callback(uint gpio, uint32_t events) {
     }
 }
 
-void hid_task(void);
-
 int main() {
     //INITIALIZATION
+    board_init();
     stdio_init_all(); //initialize serial port (default 115200 bits/s)
-    tusb_init(); //initialize TinyUSB
+    tud_init(BOARD_DEVICE_RHPORT_NUM);
 
     //GPIO init
     const uint leftButtonPin = BUTTON_INPUT_PIN1;
@@ -55,6 +55,6 @@ int main() {
 
     //wait forever
     while (1) {
-        tud_task(); // tinyusb device task
+        tud_task();
     }
 }
