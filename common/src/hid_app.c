@@ -1,7 +1,10 @@
 #include "../inc/hid_app.h"
 #include "tusb.h"
+#include <stdio.h>
+#include "pico/cyw43_arch.h"
 
 // HID Callbacks
+
 uint16_t tud_hid_get_report_cb(
     uint8_t instance,
     uint8_t report_id,
@@ -12,6 +15,7 @@ uint16_t tud_hid_get_report_cb(
     return 0;
 }
 
+//callback for SET_REPORT
 void tud_hid_set_report_cb(
     uint8_t instance,
     uint8_t report_id,
@@ -19,5 +23,5 @@ void tud_hid_set_report_cb(
     uint8_t const* buffer,
     uint16_t bufsize
 ) {
-
+    led_blink_flag = true;
 }
