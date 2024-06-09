@@ -3,6 +3,8 @@ Macro keyboard for windows computers. BUTTON1 (default pin 21) executes `LEFTCTR
 
 Button pins can be changed in ***config.h***.
 
+Libraries used: [Pico-SDK](https://github.com/raspberrypi/pico-sdk), [TinyUSB](https://github.com/raspberrypi/tinyusb/tree/pico) (included with Pico-SDK)
+
 ## To build:
 1. Ensure you have the [Pico-SDK](https://github.com/raspberrypi/pico-sdk) and relevant environment variables set up
 2. Clone the repository: `git clone https://github.com/Tidyrice/PicoW-Macro-Keyboard.git`
