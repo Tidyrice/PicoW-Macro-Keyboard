@@ -19,6 +19,7 @@ add_executable(${PROJECT_NAME}
 	common/src/usb_descriptors.c
 	common/src/hid_app.c
 	common/src/button_callback.c
+	common/src/led_control.c
 )
 
 # Create map/bin/hex/uf2 files

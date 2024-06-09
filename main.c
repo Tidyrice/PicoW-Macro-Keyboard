@@ -5,6 +5,7 @@
 
 #include "config.h"
 #include "common/inc/button_callback.h"
+#include "common/inc/led_control.h"
 
 int main() {
     //INITIALIZATION
@@ -30,5 +31,6 @@ int main() {
     //wait forever
     while (1) {
         tud_task();
+        check_handle_led_blink();
     }
 }

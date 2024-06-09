@@ -5,6 +5,8 @@
         "hid_app.c": "cpp",
         "hid_app.h": "c",
         "cyw43_arch.h": "c",
-        "button_callback.h": "c"
+        "button_callback.h": "c",
+        "led_control.h": "c",
+        "stdlib.h": "c"
     }
 }
