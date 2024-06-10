@@ -15,3 +15,7 @@ Libraries used: [Pico-SDK](https://github.com/raspberrypi/pico-sdk), [TinyUSB](h
 
 ## Known issues:
 1. **BUTTON BOUNCING**. Even with hardware debouncing (RC circuit), Pico-W sometimes detects multiple rising/falling edges in a row. This can cause the LEFTCTRL and LEFTGUI keys to remain on, even after button is released. Introducing button states has minimized this issue as stuck buttons can be fixed by pressing the button again (similar to how on a real keyboard you can oftentimes press a jammed key to unjam it). The only permanent solution is to get better buttons.
+
+## Demo:
+<img src="https://github.com/Tidyrice/PicoW-Macro-Keyboard/assets/75756358/29383e97-6510-40b6-a4b1-8d0fa8ab89b9" width="720">
+<img src="https://github.com/Tidyrice/PicoW-Macro-Keyboard/assets/75756358/ea80f009-1fc2-4f3b-9d10-4edc7575fe7e" width="720">
